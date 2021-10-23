@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-class Empleado 
+abstract class Empleado 
 {
     protected $nombre;
     protected $apellido;
