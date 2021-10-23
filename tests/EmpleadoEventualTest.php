@@ -2,7 +2,7 @@
 require_once "EmpleadoTest.php";
 class EmpleadoEventualTest extends EmpleadoTest
 {
-	public function crearDefault($nombre = "Julián",$apellido = "Rosalen",$dni = 38597346, $salario = "100000", $montos=array(5000,2000,1300,250))
+	public function crearDefault($nombre = "Julián",$apellido = "Rosalen",$dni = 33333333, $salario = "100000", $montos=array(5000,2000,1300,250))
 	{
 		$empleadoEventual = new \App\EmpleadoEventual($nombre, $apellido, $dni, $salario, $montos);
 		return $empleadoEventual;
@@ -26,6 +26,6 @@ class EmpleadoEventualTest extends EmpleadoTest
     public function testMontoInvalido()
     {
         $this->expectException(\Exception::class);//Aviso que espero una excepción
-        $empleadoEv = $this->crearDefault("Julián", "Rosalen", 38597346, 10000, $array = array(15, 30, 60,-90)); //Creo el empleado con valores negativos
+        $empleadoEv = $this->crearDefault("Julián", "Rosalen", 33333333, 10000, $array = array(15, 30, 60,-90)); //Creo el empleado con valores negativos
     }
 } 
