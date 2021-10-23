@@ -18,7 +18,7 @@ class EmpleadoEventualTest extends EmpleadoTest
     //Test para calcular Ingreso Total
     public function testFuncionaMetodoCalcularIngresoTotal()
     {
-        $empleadoEv = $this->crearDefault();
+        $empleadoEv = $this->crearDefault();// No necesito asignarle valores porque mi función crear inicial ya los tiene por default
         $this->assertEquals(100106.875, $empleadoEv->calcularIngresoTotal());
     }
 
