@@ -76,6 +76,61 @@ class EmpleadoTest extends \PHPUnit\Framework\TestCase{
 		$this->crearSinSector(false, "Rosalen", 38597346, "100000"); //Intento crear un empleado sin nombre - el valor false es conciderado vacío - 
 	}
 
+	//Test exception apellido vacío usando un string vacio
+	public function testApellidoVacio()
+	{
+		$this->expectException(\Exception::class); //Aviso que espero una excepción
+		$this->crearSinSector("Julian", "", 38597346, "100000"); //Intento crear un empleado sin apellido 
+	}
+	
+	//Test exception apellido vacío usando false como valor
+	public function testApellidoVacio2()
+	{
+		$this->expectException(\Exception::class); //Aviso que espero una excepción
+		$this->crearSinSector("Julian", false, 38597346, "100000"); //Intento crear un empleado sin apellido - el valor false es conciderado vacío - 
+	}
+
+	//Test exception dni vacío usando un string vacio
+	public function testDNIVacio()
+	{
+		$this->expectException(\Exception::class); //Aviso que espero una excepción
+		$this->crearSinSector("Julian", "Rosalen", "", "100000"); //Intento crear un empleado sin dni 
+	}
+	
+	//Test exception dni vacío usando false como valor
+	public function testDNIVacio2()
+	{
+		$this->expectException(\Exception::class); //Aviso que espero una excepción
+		$this->crearSinSector("Julian", "Rosalen", null, "100000"); //Intento crear un empleado sin dni - el valor false es conciderado vacío - 
+	}
+
+	//Test exception dni vacío usando 0 como valor
+	public function testDNIVacio3()
+	{
+		$this->expectException(\Exception::class); //Aviso que espero una excepción
+		$this->crearSinSector("Julian", "Rosalen", 0, "100000"); //Intento crear un empleado sin dni - el valor 0 es conciderado vacío y además es verificado como excepción si el entero es 0 en la clase - 
+	}
+
+	//Test exception salario vacío usando un string vacio
+	public function testSalarioVacio()
+	{
+		$this->expectException(\Exception::class); //Aviso que espero una excepción
+		$this->crearSinSector("Julian", "Rosalen", 38597346, ""); //Intento crear un empleado sin salario 
+	}
+	
+	//Test exception salario vacío usando false como valor
+	public function testSalarioVacio2()
+	{
+		$this->expectException(\Exception::class); //Aviso que espero una excepción
+		$this->crearSinSector("Julian", "Rosalen", 38597346, false); //Intento crear un empleado sin salario - el valor false es conciderado vacío - 
+	}
+
+	//Test dni con valores no numericos ni convertibles 
+	public function testDniValoresNoNumericos()
+	{
+		$this->expectException(\Exception::class);//Aviso que espero una excepción
+		$this->crearSinSector("Julian", "Rosalen", "A38597346", "100000"); //Agrego una letra al string numerico
+	}
 
 	//Test sector sin identificar
 	public function testNoSeIdentificaSector()
