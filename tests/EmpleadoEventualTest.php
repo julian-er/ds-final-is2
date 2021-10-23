@@ -10,9 +10,22 @@ class EmpleadoEventualTest extends EmpleadoTest
 
     //Test para calcular comisión
 	public function testCalcularComision()
-   {
-       $empleadoEv= $this->crearDefault(); // No necesito asignarle valores porque mi función crear inicial ya los tiene por default
-       $this->assertEquals(106.875, $empleadoEv->calcularComision()); // La cuenta utilizando mis valores por defecto da 106.875
+    {
+        $empleadoEv= $this->crearDefault(); // No necesito asignarle valores porque mi función crear inicial ya los tiene por default
+        $this->assertEquals(106.875, $empleadoEv->calcularComision()); // La cuenta utilizando mis valores por defecto da 106.875
     }
 
+    //Test para calcular Ingreso Total
+    public function testFuncionaMetodoCalcularIngresoTotal()
+    {
+        $empleadoEv = $this->crearDefault();
+        $this->assertEquals(100106.875, $empleadoEv->calcularIngresoTotal());
+    }
+
+    //Test exception monto negativo o igual a 0
+    public function testMontoInvalido()
+    {
+        $this->expectException(\Exception::class);//Aviso que espero una excepción
+        $empleadoEv = $this->crearDefault("Julián", "Rosalen", 38597346, 10000, $array = array(15, 30, 60,-90)); //Creo el empleado con valores negativos
+    }
 } 
