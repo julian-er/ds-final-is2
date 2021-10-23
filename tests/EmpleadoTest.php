@@ -62,14 +62,14 @@ class EmpleadoTest extends \PHPUnit\Framework\TestCase{
 		$this->assertEquals("Julián Rosalen 38597346 100000", strval($empleado)); // Convierto a string con el metodo strlval y utilizara el metodo toString
 	}
 
-	//Test exeption nombre vacío usando un string vacio
+	//Test exception nombre vacío usando un string vacio
 	public function testNombreVacio()
 	{
 		$this->expectException(\Exception::class); //Aviso que espero una excepción
 		$this->crearSinSector("", "Rosalen", 38597346, "100000"); //Intento crear un empleado sin nombre 
 	}
 
-	//Test exeption nombre vacío usando false como valor
+	//Test exception nombre vacío usando false como valor
 	public function testNombreVacio2()
 	{
 		$this->expectException(\Exception::class); //Aviso que espero una excepción
